@@ -1,0 +1,68 @@
+# --- Sitemas Operativos ---
+# Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux / Ubuntu
+.DS_Store
+.directory
+*~
+*.swp
+*.out
+
+# --- PHP & Composer ---
+vendor/
+.phpunit.result.cache
+.php-cs-fixer.cache
+composer.phar
+*.php.bak
+
+
+# --- Base de Datos (MySQL) ---
+# Se ignoran dumps de datos, pero se suelen mantener los scripts de migración
+*.sql
+*.sqlite
+*.db
+# --- MySQL / Workbench ---
+*.err
+*.log
+binlog.*
+
+
+# --- Configuración de Entorno (Sensible) ---
+# IMPORTANTE: No subir credenciales de DB o llaves de API
+.env
+.env.local
+.env.*.local
+config.local.php
+php-error.log
+
+# --- Servidor Web (Apache) ---
+# Logs de Apache si están dentro del proyecto
+logs/
+*.log
+access.log
+error.log
+
+# --- IDEs y Editores ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+nbproject/
+
+# --- Otros (Frontend/Temp) ---
+node_modules/
+npm-debug.log*
+.temp/
+temp/
+tmp/
+
+# --- Apache Config ---
+.htaccess
+
+# --- Archivos de respaldo de editores en Linux ---
+*~
+*.save
