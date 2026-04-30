@@ -1,6 +1,8 @@
-<IfModule mod_rewrite.c>
-RewriteEngine on
-RewriteRule ^public/ - [L]
+RewriteEngine On
+
+# Si alguien pide la raíz de ACE-CRUD, mándalo a public/
 RewriteRule ^$ public/ [L]
+
+# Si piden cualquier otra cosa que no empiece con public/, antepón public/
+RewriteCond %{REQUEST_URI} !^/ACE-CRUD/public/
 RewriteRule ^(.*)$ public/$1 [L]
-</IfModule>
