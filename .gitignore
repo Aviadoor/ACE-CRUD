@@ -60,9 +60,6 @@ npm-debug.log*
 temp/
 tmp/
 
-# --- Apache Config ---
-.htaccess
-
 # --- Archivos de respaldo de editores en Linux ---
 *~
 *.save
