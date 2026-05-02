@@ -12,7 +12,7 @@ $usuarios = $datos['usuarios'] ?? [];
     <title>Usuarios</title>
 </head>
 <body>
-    <form action="../controllers/Usuario.php" method="post">
+    <form method="POST">
         <label>
             Nombre
             <input type="text" name="nombre">
@@ -25,7 +25,7 @@ $usuarios = $datos['usuarios'] ?? [];
             Telefono <input type="text" name="telefono">
         </label>
         <br><br>
-        <button type="submit">Enviar</button>
+        <button type="submit" name="btn_enviarUsuario">Enviar</button>
     </form>
     <br><br>
     <div>

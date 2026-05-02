@@ -1,9 +1,6 @@
 <?php
-namespace models;
 
-use Database;
-
-class Usuario{
+class UsuarioModel{
     
     private $conn;
 
@@ -42,5 +39,20 @@ class Usuario{
 
         return $usuarios;
 
+    }
+
+    public function create($nombre, $correo, $telefono)
+    {
+
+        $sql = "INSERT INTO usuario (nombreUsuario, correoUsuario, telefonoUsuario) VALUES ('$nombre', '$correo', '$telefono')";
+        mysqli_query($this -> conn, $sql);
+
+    }
+
+    public function closeDB()
+    {
+
+        mysqli_close($this -> conn);
+        
     }
 }

@@ -1,34 +1,35 @@
 <?php
-require_once __DIR__ . '/../models/Usuario.php';
-
-use models\Usuario as ModelUsuario;
 
 class Usuario extends Control
 {
     
     public function form()
     {
+
+        $modelUsuario = $this -> load_model('UsuarioModel');
+        
         $datos = [];
-
-        $usuarios = new ModelUsuario;
-
-        $usuarios = $usuarios -> read();
+        
+        $usuarios = $modelUsuario -> read();
 
         if (isset($usuarios))
         {
-
             $datos['usuarios'] = $usuarios;
-
         }
 
+        if (isset($_POST['btn_enviarUsuario']))
+        {
+
+            $nombre = $_POST['nombre'];
+            $correo = $_POST['correo'];
+            $telefono = $_POST['telefono'];
+
+            $modelUsuario -> create($nombre, $correo, $telefono);
+
+            header("Location: " . URL . "/usuario/form");
+
+        }
         $this -> load_view('usuario', $datos);
-
-    }
-
-    public function mostrar()
-    {
-
-        $this -> load_model('read');
 
     }
 
