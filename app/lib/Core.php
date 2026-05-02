@@ -14,38 +14,45 @@ class Core{
         ]
         */
         $url = $this -> getUrl();
-        
-        if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php'))
+        if (!(is_null($url)))
         {
 
-            $this -> controller = ucwords($url[0]);
-
-            unset($url[0]);
-
-        }
-        require_once '../app/controllers/' . $this->controller . '.php';
-
-        $this -> controller = new $this -> controller;
-
-        if(isset($url[1]))
-        {
-
-            if(method_exists($this->controller, $url[1]))
+            if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php'))
             {
-
-                $this -> method = $url[1];
+    
+                $this -> controller = ucwords($url[0]);
+    
+                unset($url[0]);
+    
+                require_once '../app/controllers/' . $this -> controller . '.php';
+        
+                $this -> controller = new $this -> controller;
                 
-                unset($url[1]);
-
+                if(isset($url[1]))
+                {
+        
+                    if(method_exists($this -> controller, $url[1]))
+                    {
+        
+                        $this -> method = $url[1];
+                        
+                        unset($url[1]);
+        
+                    }
+        
+                }
+        
+                $this -> parameters = $url ? array_values($url) : [];
+        
+                //call_user_func_array([objeto, metodo], parametros)
+                //ejecuta el metodo de un objeto
+                if (is_object($this -> controller)){
+                    call_user_func_array([$this -> controller, $this -> method], $this -> parameters);
+                }
             }
+    
 
         }
-
-        $this -> parameters = $url ? array_values($url) : [];
-
-        //call_user_func_array([objeto, metodo], parametros)
-        //ejecuta el metodo de un objeto
-        call_user_func_array([$this -> controller, $this -> method], $this -> parameters);
 
     }
 
