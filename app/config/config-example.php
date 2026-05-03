@@ -4,12 +4,12 @@
 
 define('APP', dirname(dirname(__FILE__)));
 
-define('URL', '');
+define('URL', ''); //http://<nombre_dominio>
 
-define('SITENAME', '');
+define('SITENAME', '');//nombre_dominio
 
 //MySQL
-define('DB_HOST', '');
-define('DB_USER', '');
-define('DB_PASS', '');
-define('DB_NAME', '');
+define('DB_HOST', '');//nombre_host
+define('DB_USER', '');//nombre_usuario_db
+define('DB_PASS', '');//password_db
+define('DB_NAME', '');//nombre_db
