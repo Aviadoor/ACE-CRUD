@@ -1,12 +1,16 @@
 <?php
 
+namespace app\controllers;
+
+use app\lib\Control;
+
 class Usuario extends Control
 {
     
     public function form()
     {
 
-        $modelUsuario = $this -> load_model('UsuarioModel');
+        $modelUsuario = $this -> load_model('Usuario');
         
         $datos = [];
         
@@ -39,7 +43,7 @@ class Usuario extends Control
 
     public function update($id = [])
     {
-        $modelUsuario = $this -> load_model('UsuarioModel');
+        $modelUsuario = $this -> load_model('Usuario');
         
         $datos = [];
 
@@ -69,7 +73,7 @@ class Usuario extends Control
     public function delete($id = [])
     {
 
-        $modelUsuario = $this -> load_model('UsuarioModel');
+        $modelUsuario = $this -> load_model('Usuario');
 
         $modelUsuario -> delete($id);
 

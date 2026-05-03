@@ -1,4 +1,7 @@
 <?php
+
+namespace app\lib;
+
 class Core{
     protected $controller, $method, $parameters;
 
@@ -13,7 +16,9 @@ class Core{
             'parametrosMetodos' => 'parametros'
         ]
         */
+
         $url = $this -> getUrl();
+        
         if (!(is_null($url)))
         {
 
@@ -24,9 +29,11 @@ class Core{
     
                 unset($url[0]);
     
-                require_once '../app/controllers/' . $this -> controller . '.php';
-        
-                $this -> controller = new $this -> controller;
+                require_once APP . '/' . 'controllers/' . $this -> controller . '.php';
+                
+                $nombreCompletoClase = 'app\\controllers\\' . $this -> controller;
+
+                $this -> controller = new $nombreCompletoClase;
                 
                 if(isset($url[1]))
                 {
@@ -50,7 +57,12 @@ class Core{
                     call_user_func_array([$this -> controller, $this -> method], $this -> parameters);
                 }
             }
-    
+            else
+            {
+
+                header("Location: " . "www.pruebasdiego/views/inicio");
+
+            }
 
         }
 

@@ -1,6 +1,10 @@
 <?php
 
-class UsuarioModel{
+namespace app\models;
+
+use app\lib\Database;
+
+class Usuario{
     
     private $conn;
 

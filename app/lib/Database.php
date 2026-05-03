@@ -1,5 +1,6 @@
 <?php
-// app/lib/Database.php
+
+namespace app\lib;
 
 class Database {
     private static $host = DB_HOST;
