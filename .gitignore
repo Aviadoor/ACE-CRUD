@@ -63,5 +63,3 @@ tmp/
 # --- Archivos de respaldo de editores en Linux ---
 *~
 *.save
-
-app/config.php
