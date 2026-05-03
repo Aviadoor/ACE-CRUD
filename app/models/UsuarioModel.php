@@ -45,7 +45,40 @@ class UsuarioModel{
     {
 
         $sql = "INSERT INTO usuario (nombreUsuario, correoUsuario, telefonoUsuario) VALUES ('$nombre', '$correo', '$telefono')";
+        
         mysqli_query($this -> conn, $sql);
+
+    }
+
+    public function update($id, $nombre, $correo, $telefono)
+    {
+
+        $sql = "UPDATE usuario SET nombreUsuario='$nombre', correoUsuario='$correo', telefonoUsuario='$telefono' WHERE idUsuario='$id'";
+        
+        mysqli_query($this -> conn, $sql);
+
+    }
+
+    public function search($id)
+    {
+
+        $sql = "SELECT * FROM usuario WHERE idUsuario='$id'";
+
+        $query = mysqli_query($this -> conn, $sql);
+
+        $usuario = mysqli_fetch_array($query);
+
+        return $usuario;
+
+    }
+
+    public function delete($id = [])
+    {
+
+        $sql = "DELETE FROM usuario WHERE idUsuario=$id";
+
+        mysqli_query($this -> conn, $sql);
+
 
     }
 

@@ -1,7 +1,11 @@
 <?php
 /** @var array $datos */
 $datos = $datos ?? [];
+
 $usuarios = $datos['usuarios'] ?? [];
+
+$dominio = URL;
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +38,11 @@ $usuarios = $datos['usuarios'] ?? [];
             <ul>
                 <li>
                     <?php foreach($usuarios as $indice => $usuario): ?>
-                        <?= $usuario[0] ?>__________<?= $usuario[1] ?>__________<?= $usuario[2] ?>_____________<?= $usuario[3] ?><br>
+                        <?= $usuario[0] ?>__________
+                        <?= $usuario[1] ?>__________
+                        <?= $usuario[2] ?>_____________
+                        <?= $usuario[3] ?>
+                        => <a href="<?= $dominio ?>/usuario/update/<?=  $usuario[0] ?>">Actualizar</a> --- => <a href="<?= $dominio ?>/usuario/delete/<?=  $usuario[0] ?>">Eliminar</a><br>
                     <?php endforeach ?>
                 </li>            
             </ul>

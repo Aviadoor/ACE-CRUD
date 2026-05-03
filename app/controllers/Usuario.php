@@ -21,7 +21,9 @@ class Usuario extends Control
         {
 
             $nombre = $_POST['nombre'];
+
             $correo = $_POST['correo'];
+
             $telefono = $_POST['telefono'];
 
             $modelUsuario -> create($nombre, $correo, $telefono);
@@ -31,6 +33,50 @@ class Usuario extends Control
         }
         $this -> load_view('usuario', $datos);
 
+        $modelUsuario -> closeDB();
+
+    }
+
+    public function update($id = [])
+    {
+        $modelUsuario = $this -> load_model('UsuarioModel');
+        
+        $datos = [];
+
+        $datos['usuario'] = $modelUsuario -> search($id);
+        
+        $this -> load_view('actualizarUsuario', $datos);
+
+        if (isset($_POST['btn_enviar']))
+        {
+
+            $nombre = $_POST['nombre'];
+
+            $correo = $_POST['correo'];
+
+            $telefono = $_POST['telefono'];
+
+            $modelUsuario -> update($id, $nombre, $correo, $telefono);
+
+            header("Location: " . URL . "/usuario/form");
+
+        }
+
+        $modelUsuario -> closeDB();
+
+    }
+
+    public function delete($id = [])
+    {
+
+        $modelUsuario = $this -> load_model('UsuarioModel');
+
+        $modelUsuario -> delete($id);
+
+        header("Location: " . URL . "/usuario/form");
+        
+        $modelUsuario -> closeDB();
+    
     }
 
 }
