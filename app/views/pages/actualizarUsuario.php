@@ -1,34 +1,39 @@
 <?php
 $datos = $datos ?? [];
-
+$usuario = $datos['usuario'] ?? ['', '', '', ''];
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar Usuario</title>
+    <title>Actualizar Perfil</title>
+    <link rel="stylesheet" href="/public/css/actualizarUsuario.css">
 </head>
 <body>
-    
-    <form method="post">
-        <label>
-            nombre
-            <input type="text" name="nombre" value="<?= $datos['usuario'][1] ?>">
-            _____
-        </label>
-        
-        <label>
-            correo
-            <input type="text" name="correo" value="<?= $datos['usuario'][2] ?>">
-            _____
-        </label>
-        <label>
-            telefono
-            <input type="text" name="telefono" value="<?= $datos['usuario'][3] ?>">
-            _____
-        </label>
-        <button type="submit" name="btn_enviar">Actualizar</button>
-    </form>
+    <div class="edit-container">
+        <div class="edit-card">
+            <header>
+                <a href="javascript:history.back()" class="back-link">← Volver</a>
+                <h1>Actualizar Usuario</h1>
+            </header>
+
+            <form method="post" class="stack-form">
+                <div class="form-item">
+                    <label>Nombre del Usuario</label>
+                    <input type="text" name="nombre" value="<?= htmlspecialchars($usuario[1]) ?>" required>
+                </div>
+                <div class="form-item">
+                    <label>Correo Electrónico</label>
+                    <input type="email" name="correo" value="<?= htmlspecialchars($usuario[2]) ?>" required>
+                </div>
+                <div class="form-item">
+                    <label>Teléfono</label>
+                    <input type="text" name="telefono" value="<?= htmlspecialchars($usuario[3]) ?>">
+                </div>
+                <button type="submit" name="btn_enviar" class="btn-update">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
