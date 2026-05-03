@@ -1,3 +1,3 @@
 <?php
 require_once '../app/init.php';
-$init = new Core();
+$init = new app\lib\Core();

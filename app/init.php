@@ -1,6 +1,10 @@
 <?php
 spl_autoload_register(function($lib){
-    require_once 'lib/' . $lib . '.php';
+
+    $lib = str_replace('\\', '/', $lib);
+
+    require_once dirname(APP) . '/' . $lib . '.php';
+    
 });
 
 require_once 'config/config.php';

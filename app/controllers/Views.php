@@ -1,4 +1,8 @@
 <?php
+namespace app\controllers;
+
+use \app\lib\Control;
+
 class Views extends Control
 {
     public function inicio()
@@ -11,7 +15,7 @@ class Views extends Control
         $this->load_view('inicio', $datos);
     
     }
-    public function update($id, $name)
+    public function update($id = "", $name = "")
     {
         echo "Update view " . $id;
         

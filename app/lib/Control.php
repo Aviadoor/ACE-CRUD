@@ -1,4 +1,7 @@
 <?php
+
+namespace app\lib;
+
 class Control
 {
   public function load_model($model)
@@ -8,8 +11,10 @@ class Control
     {
       
       require_once '../app/models/' . $model . '.php';
+
+      $nombreCompletoClase = 'app\\models\\' . $model;
     
-      return new $model;
+      return new $nombreCompletoClase();
       
     }
     else
