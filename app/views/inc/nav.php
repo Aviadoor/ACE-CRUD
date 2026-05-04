@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+$load_Usuarios = false;
+
+if(isset($_SESSION['user'], $_SESSION['password']))
+{
+
+    $load_Usuarios = true;
+    
+}
+
+?>
+
 <head>
     <style>
         /* Estilos de la Barra de Navegación */
@@ -88,11 +103,23 @@
             <li class="nav-item">
                 <a href="/" class="nav-link">Inicio</a>
             </li>
+
+            <?php if($load_Usuarios): ?>
             <li class="nav-item">
                 <a href="/usuario/form" class="nav-link usuarios">Usuarios</a>
             </li>
+            <?php endif ?>
+
+            <?php if(!($load_Usuarios)): ?>
             <li class="nav-item">
                 <a href="/Authentication/Login" class="nav-link btn-login">Inicio Sesión</a>
             </li>
+            <?php endif ?>
+
+            <?php if($load_Usuarios): ?>
+            <li class="nav-item">
+                <a class="nav-link btn-login">Logout</a>
+            </li>
+            <?php endif ?>
         </ul>
     </nav>

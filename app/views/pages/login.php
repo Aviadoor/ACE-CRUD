@@ -1,3 +1,25 @@
+<?php 
+
+session_start();
+
+$datos = $datos ?? [];
+
+$validation = $datos['validation'];
+
+if ($validation)
+{
+
+    $_SESSION['user'] = $datos['user'];
+
+    $_SESSION['password'] = $datos['password'];
+
+    header("Location: " . URL);
+
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -126,6 +148,5 @@
             </div>
         </div>
     </main>
-
 </body>
 </html>

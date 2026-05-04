@@ -16,15 +16,36 @@ class Authentication extends Control
 
     public function login()
     {
+        $user = ' ';
+
+        $pass = ' ';
+
+        $validation = false;
 
         if(isset($_POST['btn_login']))
         {
 
-            
+            $user = $this -> user_processing($_POST['user']);
+
+            $pass = $_POST['password'];
+
+            $AutModel = $this -> load_model('Authentication');
+
+            $validation = $AutModel -> validation($user, $pass);
 
         }
 
-        $this -> load_view('login');    
+        $datos = [
+
+            'validation' => $validation,
+
+            'user' => $user,
+
+            'password' => $pass
+
+        ];
+
+        $this -> load_view('login', $datos);    
 
     }
     
