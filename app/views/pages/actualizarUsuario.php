@@ -1,6 +1,18 @@
 <?php
+
+session_start();
+
 $datos = $datos ?? [];
+
 $usuario = $datos['usuario'] ?? ['', '', '', ''];
+
+if (!$_SESSION['validation'])
+{
+
+    header("Location: " . URL);
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

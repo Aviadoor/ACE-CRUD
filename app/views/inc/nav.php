@@ -4,7 +4,7 @@ session_start();
 
 $load_Usuarios = false;
 
-if(isset($_SESSION['user'], $_SESSION['password']))
+if($_SESSION['validation'])
 {
 
     $load_Usuarios = true;
@@ -106,19 +106,19 @@ if(isset($_SESSION['user'], $_SESSION['password']))
 
             <?php if($load_Usuarios): ?>
             <li class="nav-item">
-                <a href="/usuario/form" class="nav-link usuarios">Usuarios</a>
+                <a href="<?= URL ?>/usuario/form" class="nav-link usuarios">Usuarios</a>
             </li>
             <?php endif ?>
 
             <?php if(!($load_Usuarios)): ?>
             <li class="nav-item">
-                <a href="/Authentication/Login" class="nav-link btn-login">Inicio Sesión</a>
+                <a href="<?= URL ?>/Authentication/Login" class="nav-link btn-login">Inicio Sesión</a>
             </li>
             <?php endif ?>
 
             <?php if($load_Usuarios): ?>
             <li class="nav-item">
-                <a class="nav-link btn-login">Logout</a>
+                <a href="<?= URL ?>/Authentication/logout" class="nav-link btn-login">Logout</a>
             </li>
             <?php endif ?>
         </ul>

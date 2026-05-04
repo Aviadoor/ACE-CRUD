@@ -1,8 +1,21 @@
 <?php
+
+session_start();
+
 /** @var array $datos */
 $datos = $datos ?? [];
+
 $usuarios = $datos['usuarios'] ?? [];
+
 $dominio = URL;
+
+if (!$_SESSION['validation'])
+{
+
+    header("Location: " . URL);
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +27,8 @@ $dominio = URL;
     <link rel="stylesheet" href="/public/css/usuario.css">
 </head>
 <body>
+    <?php include APP . '/views/inc/nav.php'; ?>
+
     <main class="container">
         <header class="header">
             <h1>Gestión de Usuarios</h1>

@@ -70,6 +70,35 @@ class Authentication extends Control
         $this -> load_view('singup');
 
     }
+    public function logout()
+    {
+
+        session_start();
+
+        // Destruye todas las variables de sesión
+        $_SESSION = array();
+
+        // Nota: esto destruirá la sesión y no solo los datos de sesión !
+        if (ini_get("session.use_cookies")) {
+
+            $params = session_get_cookie_params();
+
+            setcookie(session_name(), '', time() - 42000,
+
+                $params["path"], $params["domain"],
+
+                $params["secure"], $params["httponly"]
+
+            );
+
+        }
+
+        // Finalmente, se destruye la sesión.
+        session_destroy();
+
+        header("Location: " . URL);
+
+    }
 
     protected function generate_hash($pass)
     {

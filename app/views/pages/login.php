@@ -13,6 +13,8 @@ if ($validation)
 
     $_SESSION['password'] = $datos['password'];
 
+    $_SESSION['validation'] = $datos['validation'];
+
     header("Location: " . URL);
 
 }
