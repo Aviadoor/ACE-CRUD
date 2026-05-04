@@ -2,7 +2,9 @@
 
 namespace app\lib;
 
-class Core{
+use app\lib\Control;
+
+class Core extends Control{
     protected $controller, $method, $parameters;
 
     public function __construct()
@@ -47,22 +49,22 @@ class Core{
         
                     }
         
+                    $this -> parameters = $url ? array_values($url) : [];
+            
+                    //call_user_func_array([objeto, metodo], parametros)
+                    //ejecuta el metodo de un objeto
+                    if (is_object($this -> controller)){
+                        call_user_func_array([$this -> controller, $this -> method], $this -> parameters);
+                    }
                 }
         
-                $this -> parameters = $url ? array_values($url) : [];
-        
-                //call_user_func_array([objeto, metodo], parametros)
-                //ejecuta el metodo de un objeto
-                if (is_object($this -> controller)){
-                    call_user_func_array([$this -> controller, $this -> method], $this -> parameters);
-                }
             }
-            else
-            {
 
-                header("Location: " . "www.pruebasdiego/views/inicio");
+        }
+        else
+        {
 
-            }
+            $this -> load_view('home');
 
         }
 
