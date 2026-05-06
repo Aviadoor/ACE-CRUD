@@ -15,9 +15,9 @@ class Database {
     public static function connection()
     {
 
-        $connect = \mysqli_connect(self::$host, self::$user, self::$pass);
+        $connect = mysqli_connect(self::$host, self::$user, self::$pass);
         
-        \mysqli_select_db($connect, self::$dbname);
+        mysqli_select_db($connect, self::$dbname);
 
         return $connect;
 

@@ -20,12 +20,12 @@ class Usuario{
 
         $sql = "SELECT * FROM usuario";
 
-        $query = \mysqli_query($this -> conn, $sql);
+        $query = mysqli_query($this -> conn, $sql);
 
         //Clave => Valor de usuarios
         $usuarios = [];
         
-        while ($row = \mysqli_fetch_array($query))
+        while ($row = mysqli_fetch_array($query))
         {
 
             $usuarios[$row['idUsuario']] = [
@@ -50,7 +50,7 @@ class Usuario{
 
         $sql = "INSERT INTO usuario (nombreUsuario, correoUsuario, telefonoUsuario) VALUES ('$nombre', '$correo', '$telefono')";
         
-        \mysqli_query($this -> conn, $sql);
+        mysqli_query($this -> conn, $sql);
 
     }
 
@@ -59,7 +59,7 @@ class Usuario{
 
         $sql = "UPDATE usuario SET nombreUsuario='$nombre', correoUsuario='$correo', telefonoUsuario='$telefono' WHERE idUsuario='$id'";
         
-        \mysqli_query($this -> conn, $sql);
+        mysqli_query($this -> conn, $sql);
 
     }
 
@@ -68,9 +68,9 @@ class Usuario{
 
         $sql = "SELECT * FROM usuario WHERE idUsuario='$id'";
 
-        $query = \mysqli_query($this -> conn, $sql);
+        $query = mysqli_query($this -> conn, $sql);
 
-        $usuario = \mysqli_fetch_array($query);
+        $usuario = mysqli_fetch_array($query);
 
         return $usuario;
 
@@ -81,7 +81,7 @@ class Usuario{
 
         $sql = "DELETE FROM usuario WHERE idUsuario=$id";
 
-        \mysqli_query($this -> conn, $sql);
+        mysqli_query($this -> conn, $sql);
 
 
     }
@@ -89,7 +89,7 @@ class Usuario{
     public function closeDB()
     {
 
-        \mysqli_close($this -> conn);
+        mysqli_close($this -> conn);
         
     }
 }
