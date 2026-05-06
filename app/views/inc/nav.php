@@ -1,10 +1,14 @@
 <?php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+
+    session_start();
+
+}
 
 $load_Usuarios = false;
 
-if($_SESSION['validation'])
+if(isset($_SESSION['validation']))
 {
 
     $load_Usuarios = true;
